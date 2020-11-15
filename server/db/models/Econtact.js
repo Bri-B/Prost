@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const EContact = sequelize.define('eContact', {
+  const Econtact = sequelize.define('econtact', {
     first_name: {
       type: DataTypes.STRING,
     },
@@ -26,5 +26,5 @@ module.exports = (sequelize, DataTypes) => {
     freezeTableName: true,
   });
 
-  return EContact;
+  return Econtact;
 };
