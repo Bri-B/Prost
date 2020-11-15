@@ -5,28 +5,26 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
-import FormControl from '@material-ui/core/FormControl';
 
-export default function EContact({ setView, customerId, setFriendNumber }) {
+export default function Econtact({ setView, customerId, setFriendNumber }) {
   const [contact, setContact] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [first_name, setFirstName] = useState(null);
   const [last_name, setLastName] = useState(null);
   const [phone_number, setPhoneNumber] = useState(null);
   const [email, setEmail] = useState(null);
-  const [eContactId, setEContactId] = useState(contact.id);
+  const [eContactId, setEcontactId] = useState(contact.id);
   const [cView, setCView] = useState('add');
 
   const renderQrCodeView = () => {
-    setFriendNumber(phone_number)
+    setFriendNumber(phone_number);
     return (
       <img src={`https://api.qrserver.com/v1/create-qr-code/?data=tel:${contact.phone_number}&amp;size=100x100`} alt="" title="" />
-    )
-  }
-
+    );
+  };
 
   const getData = () => {
-    fetch(`/db/eContact/customer/${customerId}`, {
+    fetch(`/db/econtact/customer/${customerId}`, {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -34,7 +32,7 @@ export default function EContact({ setView, customerId, setFriendNumber }) {
         const [result] = data;
         if (result !== 'Empty') {
           setContact(result);
-          setEContactId(result.id);
+          setEcontactId(result.id);
           setCView('edit');
         } else {
           setCView('add');
@@ -48,7 +46,7 @@ export default function EContact({ setView, customerId, setFriendNumber }) {
     getData();
   }, []);
 
-  const editEContact = () => {
+  const editEcontact = () => {
     const obj = {
       eContactId,
       first_name,
@@ -61,7 +59,7 @@ export default function EContact({ setView, customerId, setFriendNumber }) {
         delete obj[key];
       }
     }
-    fetch('/db/eContact/edit', {
+    fetch('/db/econtact/edit', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +76,7 @@ export default function EContact({ setView, customerId, setFriendNumber }) {
 
   const addContact = async () => {
     try {
-      const result = await fetch('/db/eContact/add', {
+      const result = await fetch('/db/econtact/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +98,7 @@ export default function EContact({ setView, customerId, setFriendNumber }) {
 
   const context = (e) => {
     e.preventDefault();
-    return cView === 'edit' ? editEContact() : addContact();
+    return cView === 'edit' ? editEcontact() : addContact();
   };
 
   return (
@@ -109,7 +107,7 @@ export default function EContact({ setView, customerId, setFriendNumber }) {
         <ArrowBackIosIcon color="primary" onClick={() => setView('Home')} />
       </div>
       <br />
-      Hello from EContact
+      Hello from Econtact
       { contact ? (
         <div>
           <p>
@@ -144,7 +142,7 @@ export default function EContact({ setView, customerId, setFriendNumber }) {
         )}
       {showForm
         && (
-          <form className="EContact" noValidate autoComplete="off" onSubmit={(e) => context(e)}>
+          <form className="Econtact" noValidate autoComplete="off" onSubmit={(e) => context(e)}>
             <TextField id="filled-basic" label="First Name" variant="filled" onChange={(e) => setFirstName(e.target.value)} />
             <TextField id="filled-basic" label="Last Name" variant="filled" onChange={(e) => setLastName(e.target.value)} />
             <TextField id="filled-basic" label="Phone Number" variant="filled" onChange={(e) => setPhoneNumber(e.target.value)} />
