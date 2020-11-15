@@ -98,7 +98,7 @@ const CustomerSignUpForm = ({
       number: emNumber,
       id: gId,
     };
-    axios.post('/db/eContact/add', emergencyParams);
+    axios.post('/db/econtact/add', emergencyParams);
   };
 
   const renderCustomerFormView = () => {
