@@ -1,24 +1,13 @@
 const { Router } = require('express');
-const { Op } = require('sequelize');
 const {
   Customer,
-  Owner,
-  EContact,
-  Bar,
-  Message,
-  Image,
-  Menu,
-  Party,
-  Relationship,
-  Thread,
-  Parties_Customers,
-  Customers_Bars,
+  Econtact,
 } = require('../db/models/dbindex.js');
 
-const eContactRouter = Router();
+const econtactRouter = Router();
 
-eContactRouter.get('/', (req, res) => {
-  EContact.findAll()
+econtactRouter.get('/', (req, res) => {
+  Econtact.findAll()
     .then((eContacts) => {
       res.send(eContacts);
     })
@@ -27,9 +16,9 @@ eContactRouter.get('/', (req, res) => {
     });
 });
 
-eContactRouter.get('/customer/:customerId', (req, res) => {
+econtactRouter.get('/customer/:customerId', (req, res) => {
   const { customerId } = req.params;
-  EContact.findAll({
+  Econtact.findAll({
     where: {
       id_customer: customerId,
     },
@@ -41,8 +30,8 @@ eContactRouter.get('/customer/:customerId', (req, res) => {
       res.status(500).send(err);
     });
 });
-//TODO: Refactor
-eContactRouter.post('/add', (req, res) => {
+// TODO: Refactor
+econtactRouter.post('/add', (req, res) => {
   const {
     first,
     last,
@@ -57,7 +46,7 @@ eContactRouter.post('/add', (req, res) => {
   })
     .then((result) => {
       const customerId = result.id;
-      EContact.create({
+      Econtact.create({
         id_customer: customerId,
         first_name: first,
         last_name: last,
@@ -73,7 +62,7 @@ eContactRouter.post('/add', (req, res) => {
     });
 });
 
-eContactRouter.put('/edit', (req, res) => {
+econtactRouter.put('/edit', (req, res) => {
   const {
     eContactId,
     first_name,
@@ -81,7 +70,7 @@ eContactRouter.put('/edit', (req, res) => {
     phone_number,
     email,
   } = req.body;
-  EContact.update({
+  Econtact.update({
     first_name,
     last_name,
     phone_number,
@@ -99,9 +88,9 @@ eContactRouter.put('/edit', (req, res) => {
     });
 });
 
-eContactRouter.get('/customer/:customerId', (req, res) => {
+econtactRouter.get('/customer/:customerId', (req, res) => {
   const { customerId } = req.params;
-  EContact.findAll({
+  Econtact.findAll({
     where: {
       id_customer: customerId,
     },
@@ -116,5 +105,5 @@ eContactRouter.get('/customer/:customerId', (req, res) => {
 
 //
 module.exports = {
-  eContactRouter,
+  econtactRouter,
 };
