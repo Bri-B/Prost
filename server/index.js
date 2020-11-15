@@ -31,14 +31,14 @@ const { messageRouter } = require('./routes/message');
 const { cbRouter } = require('./routes/cb');
 const { friendshipRouter } = require('./routes/friendship');
 const { menuRouter } = require('./routes/menu');
-const { eContactRouter } = require('./routes/eContact');
+const { econtactRouter } = require('./routes/econtact');
 const { connected } = require('process');
 const { mapRouter } = require('./routes/map');
 const { gTranslateRouter } = require('./routes/gTranslate');
 const { drinksRouter } = require('./routes/drinks');
 
 app.use('/api/translate', gTranslateRouter);
-app.use('/db/eContact', eContactRouter);
+app.use('/db/econtact', econtactRouter);
 app.use('/db/customer', customerRouter);
 app.use('/db/bar', barRouter);
 app.use('/db/owner', ownerRouter);
@@ -50,9 +50,7 @@ app.use('/db/message', messageRouter);
 app.use('/db/cb', cbRouter);
 app.use('/db/friendship', friendshipRouter);
 app.use('/db/menu', menuRouter);
-app.use('/db/eContact', eContactRouter);
 app.use('/db/maps', mapRouter);
-app.use('/db/eContact', eContactRouter);
 app.use('/db/drinks', drinksRouter);
 
 app.get('/', (req, res) => {
