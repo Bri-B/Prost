@@ -3,7 +3,7 @@ const { Op } = require('sequelize');
 const {
   Customer,
   Owner,
-  EContact,
+  Econtact,
   Bar,
   Message,
   Image,

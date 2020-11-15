@@ -1,18 +1,8 @@
 const { Router } = require('express');
 const { Op } = require('sequelize');
 const {
-  Customer,
-  Owner,
-  EContact,
   Bar,
-  Message,
-  Image,
   Menu,
-  Party,
-  Relationship,
-  Thread,
-  Parties_Customers,
-  Customers_Bars,
 } = require('../db/models/dbindex.js');
 
 const menuRouter = Router();
@@ -62,7 +52,6 @@ menuRouter.post('/bar', (req, res) => {
   const { barId, info } = req.body;
   Menu.findOrCreate({
     where: {
-      // eslint-disable-next-line quote-props
       'id_bar': barId,
       info,
     },
@@ -73,7 +62,6 @@ menuRouter.post('/bar', (req, res) => {
     });
 });
 
-//
 module.exports = {
   menuRouter,
 };

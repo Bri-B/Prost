@@ -1,7 +1,7 @@
 const {
   Customer,
   Owner,
-  EContact,
+  Econtact,
   Bar,
   Message,
   Image,
