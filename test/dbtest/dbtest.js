@@ -2,7 +2,7 @@ require('dotenv').config();
 const {
   Customer,
   Owner,
-  EContact,
+  Econtact,
   Bar,
   Message,
   Image,
@@ -401,7 +401,7 @@ function primeDB() {
       }
       return console.warn('❌ Menu user undefined');
     })
-    .then(() => EContact.findOrCreate({
+    .then(() => Econtact.findOrCreate({
       where: {
         id_customer: 3,
         first_name: 'Vinsmoke',
@@ -412,9 +412,9 @@ function primeDB() {
     }))
     .then((numberEffected) => {
       if (numberEffected) {
-        return console.info('✅ EContact Created');
+        return console.info('✅ Econtact Created');
       }
-      return console.warn('❌ EContact user undefined');
+      return console.warn('❌ Econtact user undefined');
     })
     .then(() => Customers_Bars.findOrCreate({
       where: {
