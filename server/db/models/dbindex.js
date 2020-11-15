@@ -19,7 +19,7 @@ const BarModel = require('./Bar');
 const CustomerModel = require('./Customer');
 const Customers_BarsModel = require('./Customers_Bars');
 const DrinksModel = require('./Drinks');
-const eContactModel = require('./EContact');
+const EcontactModel = require('./Econtact');
 const ImageModel = require('./Image');
 const MenuModel = require('./Menu');
 const MessageModel = require('./Message');
@@ -34,7 +34,7 @@ const Bar = BarModel(sequelize, Sequelize);
 const Customer = CustomerModel(sequelize, Sequelize);
 const Customers_Bars = Customers_BarsModel(sequelize, Sequelize);
 const Drinks = DrinksModel(sequelize, Sequelize);
-const EContact = eContactModel(sequelize, Sequelize);
+const Econtact = EcontactModel(sequelize, Sequelize);
 const Image = ImageModel(sequelize, Sequelize);
 const Menu = MenuModel(sequelize, Sequelize);
 const Message = MessageModel(sequelize, Sequelize);
@@ -48,7 +48,7 @@ const Maps = MapsModel(sequelize, Sequelize);
 const models = {
   Customer,
   Owner,
-  EContact,
+  Econtact,
   Bar,
   Message,
   Image,
@@ -59,8 +59,8 @@ const models = {
   Parties_Customers,
   Customers_Bars,
   Maps,
-  Drinks
-}
+  Drinks,
+};
 
 Object.keys(models).forEach((model) => {
   if (models[model].associate) {
